@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import HeaderLinks from "../HeaderLinks"
 import Search from "../Search"
 
@@ -9,7 +10,7 @@ const Header = ({ noSearch }: Props) => {
   return (
     <header>
       <section>
-        <a className="nav-home" href="/">
+        <Link className="nav-home" to="/">
           <img
             className="nav-logo"
             src="/img/logo.svg"
@@ -18,7 +19,7 @@ const Header = ({ noSearch }: Props) => {
             height="30"
           />
           GraphQL
-        </a>
+        </Link>
         <HeaderLinks section={"home"} />
         {noSearch || <Search />}
       </section>
