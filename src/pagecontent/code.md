@@ -32,7 +32,7 @@ In addition to the GraphQL [reference implementations in JavaScript](#javascript
 
 #### [graphql-dotnet](https://github.com/graphql-dotnet/graphql-dotnet): GraphQL for .NET
 
-\`\`\`csharp
+```csharp
 using System;
 using GraphQL;
 using GraphQL.Types;
@@ -56,7 +56,7 @@ public class Program
     Console.WriteLine(json);
   }
 }                   
-\`\`\`
+```
 
   - [graphql-net](https://github.com/ckimes89/graphql-net): Convert GraphQL to IQueryable
   - [Entity GraphQL](https://github.com/lukemurray/EntityGraphQL): .NET Core GraphQL library. Compiles to IQueryable to easily expose a schema from an existing data model (E.g. from an Entity Framework data model)
@@ -69,7 +69,7 @@ public class Program
 
 A set of reusable GraphQL components for Clojure conforming to the data structures given in [alumbra.spec](https://github.com/alumbra/alumbra.spec).
 
-\`\`\`clojure
+```clojure
 (require '[alumbra.core :as alumbra]
          '[claro.data :as data])
 
@@ -95,14 +95,14 @@ A set of reusable GraphQL components for Clojure conforming to the data structur
 
 (defonce my-graphql-server
   (aleph.http/start-server #'app {:port 3000}))
-\`\`\`
+```
 
-\`\`\`bash
+```bash
 $ curl -XPOST "http://0:3000" -H'Content-Type: application/json' -d'{
   "query": "{ me { name, friends { name } } }"
 }'
 {"data":{"me":{"name":"Person #0","friends":[{"name":"Person #1"},{"name":"Person #2"}]}}}
-\`\`\`
+```
 
 #### [graphql-clj](https://github.com/tendant/graphql-clj)
 
@@ -110,7 +110,7 @@ A Clojure library that provides a GraphQL implementation.
 
 Code that executes a hello world GraphQL query with \`graphql-clj\`:
 
-\`\`\`clojure
+```clojure
 
 (def schema "type QueryRoot {
     hello: String
@@ -124,7 +124,7 @@ Code that executes a hello world GraphQL query with \`graphql-clj\`:
 (require '[graphql-clj.executor :as executor])
 
 (executor/execute nil schema resolver-fn "{ hello }")
-\`\`\`
+```
 
 #### [lacinia](https://github.com/walmartlabs/lacinia)
 
@@ -176,7 +176,7 @@ A Java library for building GraphQL APIs.
 
 Code that executes a hello world GraphQL query with \`graphql-java\`:
 
-\`\`\`java
+```java
 import graphql.ExecutionResult;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
@@ -210,7 +210,7 @@ public class HelloWorld {
         // Prints: {hello=world}
     }
 }
-\`\`\`
+```
 
 See [the graphql-java docs](https://github.com/graphql-java/graphql-java) for more information on setup.
 
@@ -222,13 +222,13 @@ The reference implementation of the GraphQL specification, designed for running 
 
 To run a \`GraphQL.js\` hello world script from the command line:
 
-\`\`\`bash
+```bash
 npm install graphql
-\`\`\`
+```
 
 Then run \`node hello.js\` with this code in \`hello.js\`:
 
-\`\`\`js
+```js
 var { graphql, buildSchema } = require('graphql');
 
 var schema = buildSchema(\`
@@ -242,7 +242,7 @@ var root = { hello: () => 'Hello world!' };
 graphql(schema, '{ hello }', root).then((response) => {
   console.log(response);
 });
-\`\`\`
+```
 
 #### [express-graphql](/graphql-js/running-an-express-graphql-server/) ([github](https://github.com/graphql/express-graphql)) ([npm](https://www.npmjs.com/package/express-graphql))
 
@@ -250,13 +250,13 @@ The reference implementation of a GraphQL API server over an Express webserver. 
 
 To run an \`express-graphql\` hello world server:
 
-\`\`\`bash
+```bash
 npm install express express-graphql graphql
-\`\`\`
+```
 
 Then run \`node server.js\` with this code in \`server.js\`:
 
-\`\`\`js
+```js
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
@@ -276,7 +276,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
-\`\`\`
+```
 
 #### [apollo-server](https://www.apollographql.com/docs/apollo-server/) ([github](https://github.com/apollographql/apollo-server)) ([npm](https://www.npmjs.com/package/apollo-server-express))
 
@@ -284,13 +284,13 @@ A set of GraphQL server packages from Apollo that work with various Node.js HTTP
 
 To run a hello world server with apollo-server-express:
 
-\`\`\`bash
+```bash
 npm install apollo-server-express express 
-\`\`\`
+```
 
 Then run \`node server.js\` with this code in \`server.js\`:
 
-\`\`\`js
+```js
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
@@ -314,7 +314,7 @@ server.applyMiddleware({ app });
 app.listen({ port: 4000 }, () =>
   console.log('Now browse to http://localhost:4000' + server.graphqlPath)
 );
-\`\`\`
+```
 
 Apollo Server also supports all Node.js HTTP server frameworks: Express, Connect, HAPI, Koa and NestJs.
 
@@ -344,7 +344,7 @@ Apollo Server also supports all Node.js HTTP server frameworks: Express, Connect
 API Platform is a fully-featured, flexible and extensible API framework built on top of Symfony.
 The following class is enough to create both a Relay-compatible GraphQL server and a hypermedia API supporting modern REST formats (JSON-LD, JSONAPI...):
 
-\`\`\`php
+```php
 <?php
 
 namespace App\Entity;
@@ -373,7 +373,7 @@ class Greeting
      */
     public $hello;
 }
-\`\`\`
+```
 
 Other API Platform features include data validation, authentication, authorization, deprecations, cache and GraphiQL integration.
 
@@ -384,7 +384,7 @@ It is framework agnostic with bindings available for Symfony and Laravel.
 
 This code declares a "product" query and a "Product" Type:
 
-\`\`\`php
+```php
 class ProductController
 {
     /**
@@ -410,7 +410,7 @@ class Product
     }
     // ...
 }
-\`\`\`
+```
 
 Other GraphQLite features include validation, security, error handling, loading via data-loader pattern...
 
@@ -420,13 +420,13 @@ Siler is a PHP library powered with high-level abstractions to work with GraphQL
 
 To run a Siler hello world script:
 
-\`\`\`graphql
+```graphql
 type Query {
   hello: String
 }
-\`\`\`
+```
 
-\`\`\`php
+```php
 <?php
 declare(strict_types=1);
 require_once '/path/to/vendor/autoload.php';
@@ -452,7 +452,7 @@ Http\server(Graphql\psr7($schema), function (\Throwable $err) {
         'message' => $err->getMessage(),
     ]);
 })()->run();
-\`\`\`
+```
 
 It also provides functionality for the construction of a WebSocket Subscriptions Server based on how Apollo works.
 
@@ -468,13 +468,13 @@ A Python library for building GraphQL APIs.
 
 To run a Graphene hello world script:
 
-\`\`\`bash
+```bash
 pip install graphene
-\`\`\`
+```
 
 Then run \`python hello.py\` with this code in \`hello.py\`:
 
-\`\`\`python
+```python
 import graphene
 
 class Query(graphene.ObjectType):
@@ -486,7 +486,7 @@ class Query(graphene.ObjectType):
 schema = graphene.Schema(query=Query)
 result = schema.execute('{ hello }')
 print(result.data['hello']) # "Hello World"
-\`\`\`
+```
 
 There are also nice bindings for [Relay](https://facebook.github.io/relay/), Django, SQLAlchemy, and Google App Engine.
 
@@ -498,13 +498,13 @@ A Ruby library for building GraphQL APIs.
 
 To run a hello world script with \`graphql-ruby\`:
 
-\`\`\`bash
+```bash
 gem install graphql
-\`\`\`
+```
 
 Then run \`ruby hello.rb\` with this code in \`hello.rb\`:
 
-\`\`\`ruby
+```ruby
 require 'graphql'
 
 class QueryType < GraphQL::Schema::Object
@@ -520,7 +520,7 @@ class Schema < GraphQL::Schema
 end
 
 puts Schema.execute('{ hello }').to_json
-\`\`\`
+```
 
 There are also nice bindings for Relay and Rails.
 
@@ -528,7 +528,7 @@ There are also nice bindings for Relay and Rails.
 
 A high performance web server with support for GraphQL. Agoo strives for a simple, easy to use API for GraphQL.
 
-\`\`\`ruby
+```ruby
 require 'agoo'
 
 class Query
@@ -556,7 +556,7 @@ sleep
 # a URL of localhost:6464/graphql?query={hello}
 #
 # ruby hello.rb
-\`\`\`
+```
 
 ### Rust
 
@@ -568,7 +568,7 @@ sleep
 
 An example of a hello world GraphQL schema and query with \`sangria\`:
 
-\`\`\`scala
+```scala
 import sangria.schema._
 import sangria.execution._
 import sangria.macros._
@@ -582,7 +582,7 @@ val schema = Schema(QueryType)
 val query = graphql"{ hello }"
 
 Executor.execute(schema, query) map println
-\`\`\`
+```
 
 ### OCaml / Reason
 
