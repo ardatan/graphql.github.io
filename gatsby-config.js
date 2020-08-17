@@ -10,8 +10,16 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "learn",
+        name: "content",
         path: `${__dirname}/src/content`,
+        include: ["**/*.md"], // ignore files starting with a dot
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pagecontent",
+        path: `${__dirname}/src/pagecontent`,
         include: ["**/*.md"], // ignore files starting with a dot
       },
     },

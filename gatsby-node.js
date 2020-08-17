@@ -17,6 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
                   parent {
                     ... on File {
                       relativeDirectory
+                      sourceInstanceName
                     }
                   }
                   frontmatter {
@@ -47,8 +48,12 @@ exports.createPages = ({ graphql, actions }) => {
         edges.forEach(({ node }) => {
           const {
             frontmatter: { permalink, next },
-            parent: { relativeDirectory },
+            parent: { relativeDirectory, sourceInstanceName },
           } = node
+
+          if (sourceInstanceName !== "content") {
+            return
+          }
 
           if (!pagesGroupedByFolder[relativeDirectory]) {
             pagesGroupedByFolder = {
@@ -110,7 +115,8 @@ exports.createPages = ({ graphql, actions }) => {
           let currentCategory = null
 
           let page = firstPage
-          while (page) {
+          let i = 0
+          while (page && i++ < 1000) {
             const {
               frontmatter: { category, next },
             } = page

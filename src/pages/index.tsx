@@ -4,7 +4,7 @@ import Prism from "../components/Prism"
 import HeaderLinks from "../components/HeaderLinks"
 import Search from "../components/Search"
 
-export default function Home() {
+export default () => {
   return (
     <Layout className={"index"}>
       <section className="fixedSearch">
