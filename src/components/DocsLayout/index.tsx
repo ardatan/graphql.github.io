@@ -1,13 +1,16 @@
 import React from "react"
 import { Link } from "gatsby"
+import DocsSidebar from "../DocsSidebar"
 
 interface Props {
   html: string
   title: string
   nextDoc: any
+  permalink: string
+  sideBarData: any
 }
 
-const index = ({ html, title, nextDoc }: Props) => {
+const index = ({ html, title, nextDoc, sideBarData }: Props) => {
   return (
     <section>
       <div className="documentationContent">
@@ -25,7 +28,7 @@ const index = ({ html, title, nextDoc }: Props) => {
             </Link>
           )}
         </div>
-        {/* <DocsSidebar site={site} page={page} /> */}
+        <DocsSidebar sideBarData={sideBarData} />
       </div>
     </section>
   )

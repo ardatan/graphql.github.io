@@ -1,4 +1,5 @@
 const path = require("path")
+const { accessSync } = require("fs")
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -13,13 +14,19 @@ exports.createPages = ({ graphql, actions }) => {
             allMarkdownRemark {
               edges {
                 node {
+                  parent {
+                    ... on File {
+                      relativeDirectory
+                    }
+                  }
                   frontmatter {
                     title
                     permalink
                     next
+                    category
+                    sublinks
                   }
                   id
-                  html
                 }
               }
             }
@@ -31,41 +38,106 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
+
         const { edges } = result.data.allMarkdownRemark
 
-        let navigationData = {}
-        const mdPages = []
+        let sideBardata = {}
+        let pagesGroupedByFolder = {}
+        const allPages = []
         edges.forEach(({ node }) => {
           const {
             frontmatter: { permalink, next },
+            parent: { relativeDirectory },
           } = node
 
-          // TODO DOCS_SIDEBAR_DATA
-          // let data
-          //   if (!navigationData[section]) {
-          //     data = { title, permalink }
-          //     navigationData = { ...navigationData, [section]: [data] }
-          //   } else {
-          //     data = { title, permalink }
-          //     navigationData = {
-          //       ...navigationData,
-          //       [section]: [...navigationData[section], data],
-          //     }
-          //   }
-          mdPages.push({
+          if (!pagesGroupedByFolder[relativeDirectory]) {
+            pagesGroupedByFolder = {
+              ...pagesGroupedByFolder,
+              [relativeDirectory]: [node],
+            }
+          } else {
+            pagesGroupedByFolder = {
+              ...pagesGroupedByFolder,
+              [relativeDirectory]: [
+                ...pagesGroupedByFolder[relativeDirectory],
+                node,
+              ],
+            }
+          }
+          allPages.push({
             permalink,
+            relativeDirectory,
             nextPermalink: next,
           })
         })
 
-        mdPages.forEach(page => {
+        Object.keys(pagesGroupedByFolder).forEach(folder => {
+          const pages = pagesGroupedByFolder[folder]
+
+          let pagesByUrl = {}
+          let previousPagesMap = {}
+
+          for (let i = 0; i < pages.length; ++i) {
+            const page = pages[i]
+            const {
+              frontmatter: { permalink, next },
+            } = page
+            if (next) {
+              previousPagesMap[next] = permalink
+            }
+            pagesByUrl[permalink] = page
+          }
+
+          let firstPage = null
+
+          for (let i = 0; i < pages.length; ++i) {
+            const page = pages[i]
+            const {
+              frontmatter: { permalink },
+            } = page
+
+            if (!previousPagesMap[permalink]) {
+              firstPage = page
+              break
+            }
+          }
+
+          if (!firstPage) {
+            throw new Error(`First page not found in ${folder}`)
+          }
+
+          let categories = []
+          let currentCategory = null
+
+          let page = firstPage
+          while (page) {
+            const {
+              frontmatter: { category, next },
+            } = page
+            if (!currentCategory || category !== currentCategory.name) {
+              currentCategory && categories.push(currentCategory)
+              currentCategory = {
+                name: category,
+                links: [],
+              }
+            }
+            currentCategory.links.push(page)
+            page = pagesByUrl[next]
+          }
+
+          categories.push(currentCategory)
+
+          sideBardata[folder] = categories
+        })
+
+        allPages.forEach(page => {
           createPage({
             path: `${page.permalink}`,
             component: docTemplate,
             context: {
               permalink: page.permalink,
               nextPermalink: page.nextPermalink,
-              navigationData,
+              sideBarData: sideBardata[page.relativeDirectory],
             },
           })
         })
