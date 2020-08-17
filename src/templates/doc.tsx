@@ -5,34 +5,38 @@ import DocsLayout from "../components/DocsLayout"
 
 interface Props {
   data: any
+  pageContext: any
 }
 
-const Blog = ({ data }: Props) => {
+const Blog = ({ data, pageContext }: Props) => {
   const {
     doc: {
-      frontmatter: { title },
+      frontmatter: { title,permalink },
       html,
     },
-    nextDoc
+    nextDoc,
   } = data
   return (
     <Layout>
-      <DocsLayout title={title} html={html} nextDoc={nextDoc} />
+      <DocsLayout title={title} permalink={permalink} html={html} nextDoc={nextDoc} sideBarData={pageContext.sideBarData} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query LearnQuery($permalink: String!,$nextPermalink:String) {
+  query LearnQuery($permalink: String!, $nextPermalink: String) {
     doc: markdownRemark(frontmatter: { permalink: { eq: $permalink } }) {
       frontmatter {
         title
         permalink
+        sublinks
       }
       id
       html
     }
-    nextDoc: markdownRemark(frontmatter: { permalink: { eq: $nextPermalink } }) {
+    nextDoc: markdownRemark(
+      frontmatter: { permalink: { eq: $nextPermalink } }
+    ) {
       frontmatter {
         title
         permalink

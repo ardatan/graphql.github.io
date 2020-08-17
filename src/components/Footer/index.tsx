@@ -1,79 +1,92 @@
 import React from "react"
+import Link from "../Link"
+
+interface LinkItem {
+  text:string,
+  href:string
+}
+
+interface FooterLinks {
+  text:string,
+  href?:string,
+  subsections: LinkItem[]
+}
+
+const links: FooterLinks[] = [
+  {
+    text: "Learn",
+    href: "/learn/",
+    subsections: [
+      { text: "Introduction", href: "/learn/" },
+      { text: "Query Language", href: "/learn/queries/" },
+      { text: "Type System", href: "/learn/schema/" },
+      { text: "Execution", href: "/learn/execution/" },
+      { text: "Best Practices", href: "/learn/best-practices/" },
+    ],
+  },
+  {
+    text: "Code",
+    href: "/code",
+    subsections: [
+      { text: "Servers", href: "/code/#server-libraries" },
+      { text: "Clients", href: "/code/#graphql-clients" },
+      { text: "Tools", href: "/code/#tools" },
+    ],
+  },
+  {
+    text: "Community",
+    href: "/community",
+    subsections: [
+      { text: "Upcoming Events", href: "/community/upcoming-events/" },
+      { text: "Clients", href: "/code/#graphql-clients" },
+      {
+        text: "Stack Overflow",
+        href: "http://stackoverflow.com/questions/tagged/graphql",
+      },
+      {
+        text: "Facebook Group",
+        href: "https://www.facebook.com/groups/graphql.community/",
+      },
+      { text: "Twitter", href: "https://twitter.com/GraphQL" },
+      {
+        text: "Stack Overflow",
+        href: "http://stackoverflow.com/questions/tagged/graphql",
+      },
+    ],
+  },
+  {
+    text: "More",
+    subsections: [
+      { text: "GraphQL Specification", href: "/https://graphql.github.io/graphql-spec/" },
+      { text: "GraphQL Foundation", href: "https://foundation.graphql.org/" },
+      {
+        text: "GraphQL GitHub",
+        href: "https://github.com/graphql",
+      },
+    ],
+  },
+]
 
 const Footer = () => {
   return (
     <div>
       <footer>
         <section className="sitemap">
-          <a href="/" className="nav-home" aria-label="Homepage" />
-          <div>
-            <h5>
-              <a href="/learn/">Learn</a>
-            </h5>
-            <a href="/learn/">Introduction</a>
-            <a href="/learn/queries/">Query Language</a>
-            <a href="/learn/schema/">Type System</a>
-            <a href="/learn/execution/">Execution</a>
-            <a href="/learn/best-practices/">Best Practices</a>
-          </div>
-          <div>
-            <h5>
-              <a href="/code">Code</a>
-            </h5>
-            <a href="/code/#server-libraries">Servers</a>
-            <a href="/code/#graphql-clients">Clients</a>
-            <a href="/code/#tools">Tools</a>
-          </div>
-          <div>
-            <h5>
-              <a href="/community">Community</a>
-            </h5>
-            <a href="/community/upcoming-events/">Upcoming Events</a>
-            <a
-              href="http://stackoverflow.com/questions/tagged/graphql"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Stack Overflow
-            </a>
-            <a
-              href="https://www.facebook.com/groups/graphql.community/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Facebook Group
-            </a>
-            <a
-              href="https://twitter.com/GraphQL"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twitter
-            </a>
-          </div>
-          <div>
-            <h5>More</h5>
-            <a
-              href="https://graphql.github.io/graphql-spec/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GraphQL Specification
-            </a>
-            <a
-              href="https://foundation.graphql.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GraphQL Foundation
-            </a>
-            <a
-              href="https://github.com/graphql"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GraphQL GitHub
-            </a>
+          <Link href="/" className="nav-home" aria-label="Homepage" />
+          {links.map(section => (
+            <div>
+              <h5>
+                {section.href ? (
+                  <Link href={section.href}>{section.text}</Link>
+                ) : (
+                  section.text
+                )}
+              </h5>
+              {section.subsections.map((subsection: any) => (
+                <Link href={subsection.href}>{subsection.text}</Link>
+              ))}
+            </div>
+          ))}
             {/* {page && (
               <a
                 href={
@@ -86,7 +99,6 @@ const Footer = () => {
                 Edit this page &#x270E;
               </a>
             )} */}
-          </div>
         </section>
         <section className="copyright">
           Copyright © {`${new Date().getFullYear()}`} The GraphQL Foundation.
@@ -114,19 +126,6 @@ const Footer = () => {
           indexName: 'graphql',
           inputSelector: '#algolia-search-input'
         });
-      `,
-        }}
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-44373548-16', 'auto');
-ga('send', 'pageview');
       `,
         }}
       />

@@ -20,6 +20,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `130`,
+            },
+          },
+          {
             resolve: "gatsby-remark-prismjs",
             options: {
               classPrefix: "language-",
@@ -53,5 +59,11 @@ module.exports = {
     },
     `gatsby-plugin-less`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-44373548-16",
+      }
+    } 
   ],
 }

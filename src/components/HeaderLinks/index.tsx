@@ -1,14 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "../Link"
 
 interface LinkItem {
   section: string
   text: string
   href: string
-}
-
-interface Props {
-  section: string
 }
 
 const links: LinkItem[] = [
@@ -33,23 +29,12 @@ const links: LinkItem[] = [
   { section: "landscape", text: "Landscape", href: "https://l.graphql.org/" },
 ]
 
-export default ({ section }: Props) => (
+export default () => (
   <nav>
-    {links.map(link =>
-      link.href.slice(0, 4) === "http" ? (
-        <a
-          key={link.section}
-          href={link.href}
-          target="_blank"
-          rel={link.href.slice(0, 4) === "http" ? "noopener noreferrer" : ""}
-        >
-          {link.text}
-        </a>
-      ) : (
-        <Link to={link.href} key={link.section} activeClassName="active">
-          {link.text}
-        </Link>
-      )
-    )}
+    {links.map(link => (
+      <Link key={link.section} href={link.href}>
+        {link.text}
+      </Link>
+    ))}
   </nav>
 )
