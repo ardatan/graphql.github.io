@@ -14,31 +14,35 @@ const PredictableResults = () => {
     showResponse(1)
     function type() {
       if (forward) {
-        document.getElementById("ch" + i).style.display = "inline"
-        i++
-        if (i === 20) {
-          forward = false
-          showResponse(3)
-          setTimeout(type, 1500)
-        } else if (i === 11) {
-          showResponse(2)
-          setTimeout(type, 1500)
-        } else {
-          setTimeout(type, Math.random() * 180 + 70)
+        if (document.getElementById("ch" + i)) {
+          document.getElementById("ch" + i).style.display = "inline"
+          i++
+          if (i === 20) {
+            forward = false
+            showResponse(3)
+            setTimeout(type, 1500)
+          } else if (i === 11) {
+            showResponse(2)
+            setTimeout(type, 1500)
+          } else {
+            setTimeout(type, Math.random() * 180 + 70)
+          }
         }
       } else {
         i--
-        document.getElementById("ch" + i).style.display = "none"
-        if (i === 0) {
-          forward = true
-          showResponse(1)
-          setTimeout(type, 2000)
-        } else {
-          setTimeout(type, 80)
+        if (document.getElementById("ch" + i)) {
+          document.getElementById("ch" + i).style.display = "none"
+          if (i === 0) {
+            forward = true
+            showResponse(1)
+            setTimeout(type, 2000)
+          } else {
+            setTimeout(type, 80)
+          }
         }
       }
     }
-  })
+  },[])
   return (
     <section className="point1" id="predictable-results">
       <div className="prose">

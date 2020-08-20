@@ -34,10 +34,11 @@ const WithoutVersion = () => {
             <div className="v1">
               <Prism
                 language="graphql"
-                code={`type Film {
-title: String
-episode: Int
-releaseDate: String
+                code={`
+type Film {
+  title: String
+  episode: Int
+  releaseDate: String
 
 
 
@@ -54,6 +55,8 @@ type Film {
   episode: Int
   releaseDate: String
   openingCrawl: String
+
+
 }`}
               />
             </div>
@@ -68,6 +71,7 @@ type Film {
   releaseDate: String
   openingCrawl: String
   director: String
+  
 }`}
               />
             </div>

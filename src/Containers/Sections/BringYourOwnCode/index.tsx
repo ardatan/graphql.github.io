@@ -13,7 +13,7 @@ const Index = (): JSX.Element => {
       setTimeout(step, delayBefore[i])
     }
     step()
-  })
+  },[])
 
   return (
     <section className="point6" id="bring-your-own-code">
@@ -44,7 +44,7 @@ type Character {
 }`}
           />
           <Prism
-            language="java"
+            language="javascript"
             code={`
 // type Character {
 class Character {
@@ -65,7 +65,7 @@ class Character {
 }`}
           />
           <Prism
-            language="python"
+            language="javascript"
             code={`
 # type Character {
 class Character:
@@ -83,7 +83,7 @@ class Character:
 `}
           />
           <Prism
-            language="java"
+            language="javascript"
             code={`
 // type Character {
 public class Character {

@@ -54,7 +54,7 @@ type Project {
     }
 }
 `
-              } language={"graphql"} />
+              } language={"json"} />
             </div>
           </section>
 

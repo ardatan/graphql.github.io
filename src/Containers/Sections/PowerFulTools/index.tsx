@@ -28,7 +28,7 @@ const PowerFulTools = () => {
         </div>
         <div className="graphiqlVid">
           {" "}
-          <video autoplay loop playsinline muted>
+          <video autoPlay muted loop playsInline >
             <source src="/img/graphiql.mp4?x" type="video/mp4" />
           </video>
         </div>

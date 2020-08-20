@@ -54,7 +54,7 @@ const SingleRequest = () => {
       ]
     }
 }
-`} language="graphql" />
+`} language="json" />
             </div>
             <img
               src="/img/server.svg"

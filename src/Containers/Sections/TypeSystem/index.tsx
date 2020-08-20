@@ -16,7 +16,7 @@ const TypeSysyem = () => {
         setTimeout(highlightLine, 800 + Math.random() * 200)
       }
     highlightLine()
-  })
+  },[])
   return (
     <section className="point3" id="type-system">
       <div className="prose">
