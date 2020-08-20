@@ -11,14 +11,20 @@ interface Props {
 const Blog = ({ data, pageContext }: Props) => {
   const {
     doc: {
-      frontmatter: { title,permalink },
-      html,
+      frontmatter: { title, permalink },
+      rawMarkdownBody,
     },
     nextDoc,
   } = data
   return (
     <Layout>
-      <DocsLayout title={title} permalink={permalink} html={html} nextDoc={nextDoc} sideBarData={pageContext.sideBarData} />
+      <DocsLayout
+        title={title}
+        permalink={permalink}
+        nextDoc={nextDoc}
+        sideBarData={pageContext.sideBarData}
+        rawMarkdownBody={rawMarkdownBody}
+      />
     </Layout>
   )
 }
@@ -32,7 +38,7 @@ export const query = graphql`
         sublinks
       }
       id
-      html
+      rawMarkdownBody
     }
     nextDoc: markdownRemark(
       frontmatter: { permalink: { eq: $nextPermalink } }

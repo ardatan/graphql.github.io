@@ -23,29 +23,7 @@ module.exports = {
         include: ["**/*.md"], // ignore files starting with a dot
       },
     },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              offsetY: `130`,
-            },
-          },
-          {
-            resolve: "gatsby-remark-prismjs",
-            options: {
-              classPrefix: "prism language-",
-              inlineCodeMarker: null,
-              aliases: { js: "javascript" },
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
-      },
-    },
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

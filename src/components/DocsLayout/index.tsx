@@ -1,22 +1,24 @@
 import React from "react"
 import { Link } from "gatsby"
 import DocsSidebar from "../DocsSidebar"
+import Marked from '../Marked'
 
 interface Props {
-  html: string
   title: string
   nextDoc: any
   permalink: string
   sideBarData: any
+  rawMarkdownBody: string
 }
 
-const index = ({ html, title, nextDoc, sideBarData }: Props) => {
+const index = ({ title, nextDoc, sideBarData,rawMarkdownBody }: Props) => {
+  console.log(rawMarkdownBody)
   return (
     <section>
       <div className="documentationContent">
         <div className="inner-content">
           <h1>{title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <Marked>{rawMarkdownBody}</Marked>
           {nextDoc && (
             <Link className="read-next" to={nextDoc.frontmatter.permalink}>
               <span className="read-next-continue">

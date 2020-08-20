@@ -7,7 +7,6 @@ interface Props {
   language: string
 }
 
-
 const Basic = ({ code, language }: Props) => (
   <Highlight theme={undefined} {...defaultProps} code={code} language={language} Prism={Prism}>
     {({ className, tokens, getLineProps, getTokenProps }:any) => (
