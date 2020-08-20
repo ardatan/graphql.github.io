@@ -27,7 +27,6 @@ const PageMarkdown = ({ page }: Props) => {
   )[0]
   
 
-  console.log(requiredPage)
   return <div dangerouslySetInnerHTML={{__html:requiredPage.node.html}}></div>
 }
 export default PageMarkdown

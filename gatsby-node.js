@@ -1,17 +1,6 @@
 const path = require("path")
 const { accessSync } = require("fs")
 
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    node: {
-      fs: 'empty',
-      module: 'empty',
-      child_process:'empty'
-    }
-  })
-}
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 

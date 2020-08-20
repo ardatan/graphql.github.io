@@ -19,7 +19,6 @@ class MiniGraphiQL extends React.Component {
 
   constructor(props) {
     super();
-
     const query = props.query.replace(/^\s+/, '');
 
     // Initialize state

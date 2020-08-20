@@ -12,7 +12,6 @@ interface Props {
 }
 
 const index = ({ title, nextDoc, sideBarData,rawMarkdownBody }: Props) => {
-  console.log(rawMarkdownBody)
   return (
     <section>
       <div className="documentationContent">

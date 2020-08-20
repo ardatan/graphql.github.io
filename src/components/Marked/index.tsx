@@ -7,13 +7,12 @@
 
 import React from "react"
 import Prism from "../Prism/index"
-import Header from './Header';
+import Header from "./Header"
 
-import MiniGraphiQL from './MiniGraphiQL';
-import { StarWarsSchema } from './swapiSchema';
+import MiniGraphiQL from "./MiniGraphiQL"
+import { StarWarsSchema } from "./swapiSchema"
 
 export default function Marked(props) {
-  console.log(marked(props.children, props))
   return <div>{marked(props.children, props)}</div>
 }
 
@@ -827,7 +826,6 @@ Parser.prototype.tok = function () {
       )
     }
     case "code": {
-      console.log(this.token)
       if (this.token.lang === "graphql") {
         var lines = this.token.text.split("\n")
         var firstLine = lines.shift().match(/^\s*#\s*({.*})$/)
@@ -844,18 +842,18 @@ Parser.prototype.tok = function () {
               ? JSON.stringify(metaData.variables, null, 2)
               : ""
 
-            return null;
-            // return (<MiniGraphiQL schema={null}
-            //   query={querys} variables={variables} />
-            // )
+            return (
+              <MiniGraphiQL
+                schema={StarWarsSchema}
+                query={query}
+                variables={variables}
+              />
+            )
           }
         }
       }
 
-      console.log(this.token.lang,this.token.text);
-      return (
-        <Prism language={this.token.lang} code={this.token.text} />
-      )
+      return <Prism language={this.token.lang} code={this.token.text} />
     }
     case "table": {
       var table = [],
