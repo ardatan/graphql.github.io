@@ -25,31 +25,33 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Rubik`,
-            variants: [`300`],
-          },
-          {
-            family: `Roboto`,
-            variants: [`300`],
-          },
-          {
-            family: `Roboto Mono`,
-            variants: [`400`, `400i`, `600`],
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: `Rubik`,
+              variants: [`300`],
+            },
+            {
+              family: `Roboto`,
+              variants: [`300`],
+            },
+            {
+              family: `Roboto Mono`,
+              variants: [`400`, `400i`, `600`],
+            },
+          ],
+        },
       },
     },
     `gatsby-plugin-less`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-44373548-16",
-      }
-    } 
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "UA-44373548-16",
+    //   }
+    // } 
   ],
 }
