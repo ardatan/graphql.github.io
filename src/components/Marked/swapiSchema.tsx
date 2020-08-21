@@ -17,7 +17,7 @@ import {
   GraphQLString
 } from 'graphql';
 
-import { makeExecutableSchema } from '@graphql-tools/schema';
+import { makeExecutableSchema } from 'graphql-tools';
 
 const schemaString = `
 schema {

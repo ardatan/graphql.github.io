@@ -62,6 +62,7 @@ class MiniGraphiQL extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.schema)
     this._runQueryFromEditor();
   }
 
@@ -77,6 +78,7 @@ class MiniGraphiQL extends React.Component {
   _runQuery() {
     this._editorQueryID++;
     var queryID = this._editorQueryID;
+
 
     graphql(
       this.props.schema,
