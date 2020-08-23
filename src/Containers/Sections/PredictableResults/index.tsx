@@ -79,40 +79,37 @@ const PredictableResults = () => {
           <div id="r1">
             <Prism
               language="json"
-              code={`
-{
-    "hero": {
-        "name": "Luke Skywalker"
-    }
-}                        
-`}
+              code={
+`{
+  "hero": {
+      "name": "Luke Skywalker"
+  }
+}`}
             />
           </div>
           <div id="r2">
             <Prism
               language="json"
-              code={`
-{
-    "hero": {
-        "name": "Luke Skywalker",
-        "height": 1.72
-    }
-}                       
-`}
+              code={
+`{
+  "hero": {
+      "name": "Luke Skywalker",
+      "height": 1.72
+  }
+}`}
             />
           </div>
           <div id="r3">
             <Prism
               language="json"
-              code={`
-{
-    "hero": {
-        "name": "Luke Skywalker",
-        "height": 1.72,
-        "mass": 77
-    }
-}                        
-`}
+              code={
+`{
+  "hero": {
+      "name": "Luke Skywalker",
+      "height": 1.72,
+      "mass": 77
+  }
+}`}
             />
           </div>
         </div>

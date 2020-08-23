@@ -29,21 +29,18 @@ const SingleRequest = () => {
             />
             <div className="query">
               <Prism code={
-`
-{
+`{
     hero {
     name
     friends {
         name
         }
     }
-}
-`} language="graphql" />
+}`} language="graphql" />
             </div>
             <div className="response">
             <Prism code={
-`
-{
+`{
     "hero": {
       "name": "Luke Skywalker",
       "friends": [
@@ -53,8 +50,7 @@ const SingleRequest = () => {
         { "name": "Leia Organa" }
       ]
     }
-}
-`} language="json" />
+}`} language="json" />
             </div>
             <img
               src="/img/server.svg"

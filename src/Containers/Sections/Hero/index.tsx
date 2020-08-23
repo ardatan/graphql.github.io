@@ -21,39 +21,33 @@ const Hero = () => {
             <div className="marketing-col">
               <h3>Describe your data</h3>
               <Prism code={
-`
-type Project {
-    name: String
-    tagline: String
-    contributors: [User] 
-}
-`
+`type Project {
+  name: String
+  tagline: String
+  contributors: [User] 
+}`
               } language={"graphql"} />
             </div>
 
             <div className="marketing-col">
               <h3>Ask for what you want</h3>
               <Prism code={
-`
-{
-    project(name: "GraphQL") {
-        tagline
-    }
-}
-`
+`{
+  project(name: "GraphQL") {
+    tagline
+  }
+}`
               } language={"graphql"} />
             </div>
 
             <div className="marketing-col">
               <h3>Get predictable results</h3>
               <Prism code={
-`
-{
-    "project": {
-      "tagline": "A query language for APIs"
-    }
-}
-`
+`{
+  "project": {
+    "tagline": "A query language for APIs"
+  }
+}`
               } language={"json"} />
             </div>
           </section>

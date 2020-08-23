@@ -34,12 +34,12 @@ module.exports = {
               variants: [`300`],
             },
             {
-              family: `Roboto`,
-              variants: [`300`],
-            },
-            {
               family: `Roboto Mono`,
               variants: [`400`, `400i`, `600`],
+            },
+            {
+              family: `Roboto`,
+              variants: [`300`],
             },
           ],
         },
@@ -52,6 +52,6 @@ module.exports = {
     //   options: {
     //     trackingId: "UA-44373548-16",
     //   }
-    // } 
+    // }
   ],
 }

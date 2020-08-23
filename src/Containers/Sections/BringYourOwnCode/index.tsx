@@ -36,8 +36,8 @@ const Index = (): JSX.Element => {
         <div id="leverageCodeView">
           <Prism
             language="graphql"
-            code={`
-type Character {
+            code={
+`type Character {
     name: String
     homeWorld: Planet
     friends: [Character]
@@ -45,8 +45,8 @@ type Character {
           />
           <Prism
             language="javascript"
-            code={`
-// type Character {
+            code={
+`// type Character {
 class Character {
     // name: String
     getName() {
@@ -66,8 +66,8 @@ class Character {
           />
           <Prism
             language="javascript"
-            code={`
-# type Character {
+            code={
+`# type Character {
 class Character:
   # name: String
   def name(self):

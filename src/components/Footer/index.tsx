@@ -38,7 +38,6 @@ const links: FooterLinks[] = [
     href: "/community",
     subsections: [
       { text: "Upcoming Events", href: "/community/upcoming-events/" },
-      { text: "Clients", href: "/code/#graphql-clients" },
       {
         text: "Stack Overflow",
         href: "http://stackoverflow.com/questions/tagged/graphql",
@@ -48,10 +47,6 @@ const links: FooterLinks[] = [
         href: "https://www.facebook.com/groups/graphql.community/",
       },
       { text: "Twitter", href: "https://twitter.com/GraphQL" },
-      {
-        text: "Stack Overflow",
-        href: "http://stackoverflow.com/questions/tagged/graphql",
-      },
     ],
   },
   {

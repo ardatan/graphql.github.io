@@ -40,8 +40,8 @@ const TypeSysyem = () => {
           <div id="query-highlight" className="highlight" />
           <Prism
             language="graphql"
-            code={`
-{
+            code={
+`{
   hero {
     name
     friends {
@@ -59,16 +59,15 @@ const TypeSysyem = () => {
       }
     }
   }
-}
-`}
+}`}
           />
         </div>
         <div className="type-system">
           <div id="type-highlight" className="highlight" />
           <Prism
             language="graphql"
-            code={`
-type Query {
+            code={
+`type Query {
   hero: Character
 }
 
