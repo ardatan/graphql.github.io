@@ -26,6 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
                     next
                     category
                     sublinks
+                    sidebarTitle
                   }
                   id
                 }
@@ -47,7 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
         const allPages = []
         edges.forEach(({ node }) => {
           const {
-            frontmatter: { permalink, next },
+            frontmatter: { permalink, next,sidebarTitle },
             parent: { relativeDirectory, sourceInstanceName },
           } = node
 
@@ -72,6 +73,7 @@ exports.createPages = ({ graphql, actions }) => {
           allPages.push({
             permalink,
             relativeDirectory,
+            sidebarTitle,
             nextPermalink: next,
           })
         })
