@@ -3,10 +3,13 @@ import Prism from "../../../components/Prism"
 
 const PredictableResults = () => {
   useEffect(() => {
-    const showResponse = num => {
-      document.getElementById("r1").style.display = num === 1 ? "block" : "none"
-      document.getElementById("r2").style.display = num === 2 ? "block" : "none"
-      document.getElementById("r3").style.display = num === 3 ? "block" : "none"
+    const showResponse = (num: Number) => {
+      document.getElementById("r1")!.style.display =
+        num === 1 ? "block" : "none"
+      document.getElementById("r2")!.style.display =
+        num === 2 ? "block" : "none"
+      document.getElementById("r3")!.style.display =
+        num === 3 ? "block" : "none"
     }
     let i = 0
     let forward = true
@@ -15,7 +18,7 @@ const PredictableResults = () => {
     function type() {
       if (forward) {
         if (document.getElementById("ch" + i)) {
-          document.getElementById("ch" + i).style.display = "inline"
+          document.getElementById("ch" + i)!.style.display = "inline"
           i++
           if (i === 20) {
             forward = false
@@ -31,7 +34,7 @@ const PredictableResults = () => {
       } else {
         i--
         if (document.getElementById("ch" + i)) {
-          document.getElementById("ch" + i).style.display = "none"
+          document.getElementById("ch" + i)!.style.display = "none"
           if (i === 0) {
             forward = true
             showResponse(1)
@@ -42,7 +45,7 @@ const PredictableResults = () => {
         }
       }
     }
-  },[])
+  }, [])
   return (
     <section className="point1" id="predictable-results">
       <div className="prose">

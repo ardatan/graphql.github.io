@@ -5,10 +5,10 @@ const WithoutVersion = () => {
   useEffect(() => {
     let i = 0
     let inView = document.getElementById("typeEvolveView")
-    inView.className = "step" + i
+    inView!.className = "step" + i
     setInterval(function () {
       i = (i + 1) % 7
-      inView.className = "step" + i
+      inView!.className = "step" + i
     }, 2200)
   })
   return (

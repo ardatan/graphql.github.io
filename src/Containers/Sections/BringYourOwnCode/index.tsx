@@ -8,7 +8,7 @@ const Index = (): JSX.Element => {
     var inView = document.getElementById("leverageCodeView")
     var delayBefore = [800, 1800, 1200, 3000, 3000, 3000]
     function step() {
-      inView.className = "step" + i
+      inView!.className = "step" + i
       i = (i + 1) % 6
       setTimeout(step, delayBefore[i])
     }

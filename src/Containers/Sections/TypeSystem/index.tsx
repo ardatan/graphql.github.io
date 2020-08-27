@@ -9,14 +9,14 @@ const TypeSysyem = () => {
     const typeLines = [2, 6, 7, 6, 8, 13, 14, 9, 18, 19, 20, 13]
     const queryLines = [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14]
 
-    const highlightLine = ()  => {
-        typeHighlight.style.top = 17 * typeLines[line] - 9 + "px"
-        queryHighlight.style.top = 17 * queryLines[line] - 9 + "px"
-        line = (line + 1) % typeLines.length
-        setTimeout(highlightLine, 800 + Math.random() * 200)
-      }
+    const highlightLine = () => {
+      typeHighlight!.style.top = 17 * typeLines[line] - 9 + "px"
+      queryHighlight!.style.top = 17 * queryLines[line] - 9 + "px"
+      line = (line + 1) % typeLines.length
+      setTimeout(highlightLine, 800 + Math.random() * 200)
+    }
     highlightLine()
-  },[])
+  }, [])
   return (
     <section className="point3" id="type-system">
       <div className="prose">

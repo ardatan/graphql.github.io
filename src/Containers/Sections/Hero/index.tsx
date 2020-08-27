@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="abs">
           <header aria-hidden>
             <section>
-              <HeaderLinks section={"index"} />
+              <HeaderLinks />
             </section>
           </header>
           <section className="intro">
