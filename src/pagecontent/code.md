@@ -108,7 +108,7 @@ $ curl -XPOST "http://0:3000" -H'Content-Type: application/json' -d'{
 
 A Clojure library that provides a GraphQL implementation.
 
-Code that executes a hello world GraphQL query with \`graphql-clj\`:
+Code that executes a hello world GraphQL query with `graphql-clj`:
 
 ```clojure
 
@@ -174,7 +174,7 @@ GQL is a Groovy library for GraphQL
 
 A Java library for building GraphQL APIs.
 
-Code that executes a hello world GraphQL query with \`graphql-java\`:
+Code that executes a hello world GraphQL query with `graphql-java`:
 
 ```java
 import graphql.ExecutionResult;
@@ -220,22 +220,22 @@ See [the graphql-java docs](https://github.com/graphql-java/graphql-java) for mo
 
 The reference implementation of the GraphQL specification, designed for running GraphQL in a Node.js environment.
 
-To run a \`GraphQL.js\` hello world script from the command line:
+To run a `GraphQL.js` hello world script from the command line:
 
 ```bash
 npm install graphql
 ```
 
-Then run \`node hello.js\` with this code in \`hello.js\`:
+Then run `node hello.js` with this code in `hello.js`:
 
 ```js
 var { graphql, buildSchema } = require('graphql');
 
-var schema = buildSchema(\`
+var schema = buildSchema(`
   type Query {
     hello: String
   }
-\`);
+`);
 
 var root = { hello: () => 'Hello world!' };
 
@@ -248,24 +248,24 @@ graphql(schema, '{ hello }', root).then((response) => {
 
 The reference implementation of a GraphQL API server over an Express webserver. You can use this to run GraphQL in conjunction with a regular Express webserver, or as a standalone GraphQL server.
 
-To run an \`express-graphql\` hello world server:
+To run an `express-graphql` hello world server:
 
 ```bash
 npm install express express-graphql graphql
 ```
 
-Then run \`node server.js\` with this code in \`server.js\`:
+Then run `node server.js` with this code in `server.js`:
 
 ```js
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
 
-var schema = buildSchema(\`
+var schema = buildSchema(`
   type Query {
     hello: String
   }
-\`);
+`);
 
 var root = { hello: () => 'Hello world!' };
 
@@ -288,17 +288,17 @@ To run a hello world server with apollo-server-express:
 npm install apollo-server-express express 
 ```
 
-Then run \`node server.js\` with this code in \`server.js\`:
+Then run `node server.js` with this code in `server.js`:
 
 ```js
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
-const typeDefs = gql\`
+const typeDefs = gql`
   type Query {
     hello: String
   }
-\`;
+`;
 
 const resolvers = {
   Query: {
@@ -472,7 +472,7 @@ To run a Graphene hello world script:
 pip install graphene
 ```
 
-Then run \`python hello.py\` with this code in \`hello.py\`:
+Then run `python hello.py` with this code in `hello.py`:
 
 ```python
 import graphene
@@ -496,13 +496,13 @@ There are also nice bindings for [Relay](https://facebook.github.io/relay/), Dja
 
 A Ruby library for building GraphQL APIs.
 
-To run a hello world script with \`graphql-ruby\`:
+To run a hello world script with `graphql-ruby`:
 
 ```bash
 gem install graphql
 ```
 
-Then run \`ruby hello.rb\` with this code in \`hello.rb\`:
+Then run `ruby hello.rb` with this code in `hello.rb`:
 
 ```ruby
 require 'graphql'
@@ -566,7 +566,7 @@ sleep
 
 #### [Sangria](http://sangria-graphql.org/) ([github](https://github.com/sangria-graphql/sangria)): A Scala GraphQL library that supports [Relay](https://facebook.github.io/relay/).
 
-An example of a hello world GraphQL schema and query with \`sangria\`:
+An example of a hello world GraphQL schema and query with `sangria`:
 
 ```scala
 import sangria.schema._
@@ -636,7 +636,7 @@ Executor.execute(schema, query) map println
 
   - [Relay](https://facebook.github.io/relay/) ([github](https://github.com/facebook/relay)) ([npm](https://www.npmjs.com/package/react-relay)): Facebook's framework for building React applications that talk to a GraphQL backend.
   - [Apollo Client](http://apollographql.com/client/) ([github](https://github.com/apollographql/apollo-client)): A powerful JavaScript GraphQL client, designed to work well with React, React Native, Angular 2, or just plain JavaScript.
-  - [graphql-request](https://github.com/prisma/graphql-request): A simple and flexible JavaScript GraphQL client that works in all JavaScript environments (the browser, Node.js, and React Native) - basically a lightweight wrapper around \`fetch\`.
+  - [graphql-request](https://github.com/prisma/graphql-request): A simple and flexible JavaScript GraphQL client that works in all JavaScript environments (the browser, Node.js, and React Native) - basically a lightweight wrapper around `fetch`.
   - [Lokka](https://github.com/kadirahq/lokka): A simple JavaScript GraphQL client that works in all JavaScript environments (the browser, Node.js, and React Native).
   - [nanogql](https://github.com/yoshuawuyts/nanogql): Tiny GraphQL client library using template strings.
   - [gq-loader](https://github.com/Houfeng/gq-loader): A simple JavaScript GraphQL client，Let the *.gql file be used as a module through webpack loader.

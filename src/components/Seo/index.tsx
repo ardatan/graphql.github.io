@@ -30,7 +30,9 @@ const Seo = ({ title, description }: Props): JSX.Element => {
             : data.site.siteMetadata.description,
         },
       ]}
-    />
+    >
+      <meta name="viewport" content="width=640" />
+    </Helmet>
   )
 }
 
