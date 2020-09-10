@@ -17,9 +17,9 @@ import {
   GraphQLString
 } from 'graphql';
 
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
-const schemaString = `
+const typeDefs = /* GraphQL */`
 schema {
   query: Query
   mutation: Mutation
@@ -483,6 +483,6 @@ const resolvers = {
  * type we defined above) and export it.
  */
 export const StarWarsSchema = makeExecutableSchema({
-  typeDefs: [schemaString],
+  typeDefs,
   resolvers
 });
