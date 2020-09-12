@@ -75,11 +75,11 @@ class MiniGraphiQL extends React.Component {
     this._runQuery();
   }
 
-  _runQuery() {
+  async _runQuery() {
     this._editorQueryID++;
     var queryID = this._editorQueryID;
     try {
-      const result = await graphql({
+       const result = await graphql({
         schema: this.props.schema,
         source: this.state.query,
         variableValues: JSON.parse(this.state.variables || "{}"),
