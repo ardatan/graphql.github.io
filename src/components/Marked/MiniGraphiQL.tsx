@@ -78,26 +78,26 @@ class MiniGraphiQL extends React.Component {
   _runQuery() {
     this._editorQueryID++;
     var queryID = this._editorQueryID;
+    try {
+      const result = await graphql({
+        schema: this.props.schema,
+        source: this.state.query,
+        variableValues: JSON.parse(this.state.variables || "{}"),
+        rootValue: this.props.rootValue,
+      })
 
-
-    graphql(
-      this.props.schema,
-      this.state.query,
-      this.props.rootValue,
-      null, // context
-      this.state.variables && JSON.parse(this.state.variables)
-    ).then(result => {
       if (result.errors) {
-        result.errors = result.errors.map(formatError);
+        result.errors = result.errors.map(formatError)
       }
+
       if (queryID === this._editorQueryID) {
-        this.setState({ response: JSON.stringify(result, null, 2) });
+        this.setState({ response: JSON.stringify(result, null, 2) })
       }
-    }).catch(error => {
+    } catch (error) {
       if (queryID === this._editorQueryID) {
-        this.setState({ response: JSON.stringify(error, null, 2) });
+        this.setState({ response: JSON.stringify(error, null, 2) })
       }
-    });
+    }
   }
 
   _handleEditQuery(value) {
